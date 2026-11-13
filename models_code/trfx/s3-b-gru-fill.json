@@ -1,0 +1,26 @@
+{
+ "name": "s3-b-gru-fill",
+ "notes": "round-3 stack on cat31 + no position embedding + d32 + max_epochs 300 (orchestrator, 2026-11-05)",
+ "model": {
+  "head": "ar_next_cat31",
+  "pos": "none",
+  "d": 32,
+  "encoder": "trf_gru",
+  "input": "concat_linear_xin"
+ },
+ "loss": {
+  "terms": {
+   "risk_bce_1y": 1.0,
+   "next_nll_cat31": 1.0
+  }
+ },
+ "sim": {
+  "simulator": "cat31",
+  "stepper": "fill"
+ },
+ "train": {
+  "max_epochs": 300,
+  "fitter": "model_fill",
+  "fill_passes": 1
+ }
+}

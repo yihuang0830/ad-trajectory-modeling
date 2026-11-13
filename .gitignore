@@ -1,0 +1,13 @@
+# Data, models and person-level outputs never belong in this repository.
+_runs/
+logs/
+results/
+*.npz
+*.npy
+*.pt
+*.bin
+*.csv
+*.xlsx
+*.parquet
+__pycache__/
+.DS_Store

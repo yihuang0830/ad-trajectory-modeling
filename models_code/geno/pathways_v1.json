@@ -1,0 +1,27 @@
+{
+ "version": "v1",
+ "date": "2026-11-10",
+ "status": "工作版本，待用户 / PI 确认；改了基因集只需重跑 geno2_score.py（PRS-CS 权重不用重跑）",
+ "basis": "两层基因设计文档 的 Tier 2（先天免疫 / 小胶质细胞、脂质代谢、内吞 / 血管清除），按用户 2026-11-10 的意思多做几条：加上 Kunkle 2019 通路富集里的淀粉样蛋白（APP 代谢）和 tau；文档的『血管清除』（Aβ 经血管 / 转胞吞清除）归在淀粉样那一条",
+ "msigdb_release": "2024.1.Hs (c5.go.bp, c5.go.mf, c2.cp.kegg_legacy; gene symbols)",
+ "gene_coordinates": "GENCODE v46 lifted to GRCh37 (gencode.v46lift37.basic.annotation.gtf.gz), gene records",
+ "gene_window_bp": 10000,
+ "pathways": {
+  "immune": {"label": "先天免疫 / 小胶质细胞",
+             "sets": ["GOBP_GLIAL_CELL_ACTIVATION", "GOBP_MYELOID_LEUKOCYTE_ACTIVATION", "GOBP_COMPLEMENT_ACTIVATION", "GOBP_PHAGOCYTOSIS"]},
+  "lipid": {"label": "脂质 / 脂蛋白",
+            "sets": ["GOBP_PROTEIN_LIPID_COMPLEX_ORGANIZATION", "GOBP_REGULATION_OF_PLASMA_LIPOPROTEIN_PARTICLE_LEVELS",
+                     "GOBP_STEROL_METABOLIC_PROCESS", "GOBP_CHOLESTEROL_EFFLUX"]},
+  "endocytosis": {"label": "内吞 / 内体运输",
+                  "sets": ["GOBP_RECEPTOR_MEDIATED_ENDOCYTOSIS", "GOBP_CLATHRIN_DEPENDENT_ENDOCYTOSIS",
+                           "GOBP_ENDOSOME_TO_LYSOSOME_TRANSPORT", "GOBP_RETROGRADE_TRANSPORT_ENDOSOME_TO_GOLGI"]},
+  "amyloid": {"label": "淀粉样蛋白（APP 加工、Aβ 代谢与清除）",
+              "sets": ["GOBP_AMYLOID_PRECURSOR_PROTEIN_METABOLIC_PROCESS", "GOBP_AMYLOID_BETA_METABOLIC_PROCESS",
+                       "GOBP_AMYLOID_BETA_CLEARANCE", "GOMF_AMYLOID_BETA_BINDING"]},
+  "tau": {"label": "tau",
+          "sets": ["GOMF_TAU_PROTEIN_BINDING", "GOMF_TAU_PROTEIN_KINASE_ACTIVITY", "GOBP_REGULATION_OF_TAU_PROTEIN_KINASE_ACTIVITY"]}
+ },
+ "rest": {"label": "其余", "definition": "不在以上任何一条通路（含窗口）里的变异"},
+ "exclusion": {"apoe_region_grch37": [19, 44400000, 46500000], "tier1_window_bp": 500000,
+               "tier1_loci": "geno2_tier1.LEADS 的全部先导变异（BIN1、CLU、PICALM、SORL1 两个、ABCA7、TREM2 两个），不论 Tier 1 留没留"}
+}
